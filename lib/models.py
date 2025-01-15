@@ -429,7 +429,7 @@ class GP_VAE(HI_VAE):
 
             b_inv_a = _b_scale_inv @ a.scale.to_dense()
 
-        # ~10x times faster on CPU then on GPU
+        # ~10x times faster on CPU then x GPU
         with tf.device('/cpu:0'):
             kl_div = (self.pz_scale_log_abs_determinant - a.scale.log_abs_determinant() +
                       0.5 * (-tf.cast(a.scale.domain_dimension_tensor(), a.dtype) +
